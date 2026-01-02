@@ -27,7 +27,7 @@ const navLinks = [
       </div>
     </a>
 
-    <!-- Navigation -->
+    <!-- Desktop Navigation -->
     <nav class="header__nav">
       <ul class="header__nav-list">
         {navLinks.map(link => (
@@ -39,6 +39,22 @@ const navLinks = [
     </nav>
 
     <div class="header__actions">
+      <!-- Hamburger Menu Button (Mobile/Tablet) -->
+      <button
+        class="header__menu-button"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg class="header__menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <svg class="header__close-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+
+      <!-- Phone CTA -->
       <a href={phoneHref} class="header__phone" aria-label={`Call ${phoneNumber}`}>
         <svg class="header__phone-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
@@ -47,7 +63,92 @@ const navLinks = [
       </a>
     </div>
   </div>
+
+  <!-- Mobile Navigation Menu -->
+  <nav class="header__mobile-nav" id="mobile-menu" aria-label="Mobile navigation">
+    <div class="header__mobile-nav-header">
+      <span class="header__mobile-nav-title">Menu</span>
+      <button
+        class="header__mobile-nav-close"
+        aria-label="Close navigation menu"
+      >
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <ul class="header__mobile-nav-list">
+      {navLinks.map(link => (
+        <li class="header__mobile-nav-item">
+          <a href={link.href} class="header__mobile-nav-link">{link.label}</a>
+        </li>
+      ))}
+      <li class="header__mobile-nav-item header__mobile-nav-item--cta">
+        <a href={phoneHref} class="header__mobile-nav-cta">
+          <svg class="header__mobile-nav-cta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+          </svg>
+          Call {phoneNumber}
+        </a>
+      </li>
+    </ul>
+  </nav>
 </header>
+
+<script>
+  // Mobile menu toggle
+  const menuButton = document.querySelector('.header__menu-button');
+  const mobileMenu = document.querySelector('.header__mobile-nav');
+  const closeButton = document.querySelector('.header__mobile-nav-close');
+
+  function closeMenu() {
+    if (menuButton && mobileMenu) {
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.classList.remove('header__menu-button--active');
+      mobileMenu.classList.remove('header__mobile-nav--active');
+      document.body.style.overflow = '';
+    }
+  }
+
+  function openMenu() {
+    if (menuButton && mobileMenu) {
+      menuButton.setAttribute('aria-expanded', 'true');
+      menuButton.classList.add('header__menu-button--active');
+      mobileMenu.classList.add('header__mobile-nav--active');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  if (menuButton && mobileMenu) {
+    // Toggle menu with hamburger button
+    menuButton.addEventListener('click', () => {
+      const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+      if (isExpanded) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    // Close menu with close button
+    if (closeButton) {
+      closeButton.addEventListener('click', closeMenu);
+    }
+
+    // Close menu when clicking a link
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Close menu on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') {
+        closeMenu();
+      }
+    });
+  }
+</script>
 
 <style>
   .header {
@@ -143,11 +244,54 @@ const navLinks = [
     background-color: var(--color-gray-50);
   }
 
-  /* Phone CTA */
+  /* Actions (hamburger + phone) */
   .header__actions {
     justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
   }
 
+  /* Hamburger Menu Button */
+  .header__menu-button {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    color: var(--color-text);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    border-radius: var(--border-radius-md);
+  }
+
+  .header__menu-button:hover {
+    background-color: var(--color-gray-100);
+    color: var(--color-primary);
+  }
+
+  .header__menu-icon,
+  .header__close-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .header__close-icon {
+    display: none;
+  }
+
+  .header__menu-button--active .header__menu-icon {
+    display: none;
+  }
+
+  .header__menu-button--active .header__close-icon {
+    display: block;
+  }
+
+  /* Phone CTA */
   .header__phone {
     display: inline-flex;
     align-items: center;
@@ -180,6 +324,128 @@ const navLinks = [
     font-size: var(--text-base);
   }
 
+  /* Mobile Navigation Menu */
+  .header__mobile-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    max-width: 320px;
+    height: 100vh;
+    background-color: white;
+    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.1);
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: calc(var(--z-overlay) + 1);
+    overflow-y: auto;
+  }
+
+  .header__mobile-nav--active {
+    transform: translateX(0);
+  }
+
+  .header__mobile-nav-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-5) var(--space-6);
+    border-bottom: 1px solid var(--color-gray-200);
+  }
+
+  .header__mobile-nav-title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
+    color: var(--color-gray-950);
+  }
+
+  .header__mobile-nav-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    color: var(--color-gray-600);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    border-radius: var(--border-radius-md);
+  }
+
+  .header__mobile-nav-close:hover {
+    background-color: var(--color-gray-100);
+    color: var(--color-gray-950);
+  }
+
+  .header__mobile-nav-close svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .header__mobile-nav-list {
+    list-style: none;
+    margin: 0;
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .header__mobile-nav-item {
+    margin: 0;
+  }
+
+  .header__mobile-nav-link {
+    display: block;
+    font-family: var(--font-body);
+    font-size: var(--text-lg);
+    font-weight: var(--font-medium);
+    color: var(--color-text);
+    text-decoration: none;
+    padding: var(--space-4);
+    border-radius: var(--border-radius-md);
+    transition: all var(--transition-base);
+  }
+
+  .header__mobile-nav-link:hover {
+    background-color: var(--color-gray-50);
+    color: var(--color-primary);
+  }
+
+  .header__mobile-nav-item--cta {
+    margin-top: var(--space-4);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-gray-200);
+  }
+
+  .header__mobile-nav-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    background-color: var(--color-primary);
+    color: white;
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-weight: var(--font-bold);
+    font-size: var(--text-lg);
+    padding: var(--space-4);
+    border-radius: var(--border-radius-lg);
+    transition: all var(--transition-base);
+  }
+
+  .header__mobile-nav-cta:hover {
+    background-color: var(--color-primary-dark);
+  }
+
+  .header__mobile-nav-cta-icon {
+    width: 20px;
+    height: 20px;
+  }
+
   /* Desktop Navigation */
   @media (min-width: 1100px) {
     .header__nav {
@@ -187,7 +453,7 @@ const navLinks = [
     }
   }
 
-  /* Tablet */
+  /* Tablet & Mobile - Show hamburger menu */
   @media (max-width: 1099px) {
     .header__container {
       grid-template-columns: auto 1fr;
@@ -197,9 +463,28 @@ const navLinks = [
     .header__actions {
       justify-self: end;
     }
+
+    .header__menu-button {
+      display: flex;
+    }
+
+    .header__mobile-nav {
+      display: block;
+    }
+
+    .header__phone-number {
+      display: none;
+    }
+
+    .header__phone {
+      padding: var(--space-3);
+      min-width: 48px;
+      min-height: 48px;
+      justify-content: center;
+    }
   }
 
-  /* Mobile */
+  /* Mobile - Smaller header */
   @media (max-width: 640px) {
     .header__container {
       padding: var(--space-3) var(--space-4);
@@ -212,17 +497,6 @@ const navLinks = [
 
     .header__logo-name {
       font-size: var(--text-base);
-    }
-
-    .header__phone-number {
-      display: none;
-    }
-
-    .header__phone {
-      padding: var(--space-3);
-      min-width: 48px;
-      min-height: 48px;
-      justify-content: center;
     }
   }
 </style>
