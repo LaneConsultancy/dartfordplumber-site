@@ -1,0 +1,73 @@
+{
+  "hero": {
+    "headline": "Find Trusted Dartford Plumbers — Rated 4.8+ Stars",
+    "subheadline": "10 local plumbers ready to help with your emergency or planned work. Highly rated professionals verified by real customer reviews.",
+    "cta": {
+      "primary": "View Local Plumbers",
+      "secondary": "01322 936116"
+    }
+  },
+  "intro": {
+    "heading": "When You Need a Plumber in Dartford, You Need Someone You Can Trust",
+    "body": [
+      "A burst pipe at 6am. A boiler that's stopped working in December. A bathroom renovation that can't wait. When you need a plumber in Dartford, you're not just looking for someone with a van and a wrench — you need someone reliable who'll do the job right.",
+      "That's why we've put together this directory of Dartford's top-rated plumbers. These trusted professionals have earned ratings of 4.8 stars or higher from real local customers.",
+      "No cold-calling strangers. No wondering if they'll show up. Just 10 trusted local plumbers serving Dartford and the surrounding area, ready to help with everything from emergency call-outs to planned installations."
+    ]
+  },
+  "why": {
+    "heading": "Why Use This Directory?",
+    "reasons": [
+      {
+        "title": "Pre-Vetted for Quality",
+        "description": "Every plumber listed has a minimum 4.8-star rating and at least 10 verified customer reviews. We've done the research so you don't have to."
+      },
+      {
+        "title": "Professional & Qualified",
+        "description": "Our listed plumbers are established professionals who maintain appropriate qualifications and insurance for the work they undertake."
+      },
+      {
+        "title": "Local to Dartford",
+        "description": "These aren't national call centres — they're local tradesmen based within 2 miles of Dartford who know the area and can respond quickly."
+      },
+      {
+        "title": "Real Contact Details",
+        "description": "Call them directly. No middleman, no booking fees, no waiting for callbacks from a central office."
+      }
+    ]
+  },
+  "servicesIntro": "Our listed plumbers can help with:",
+  "services": [
+    "Emergency plumbing repairs",
+    "Boiler installation and servicing",
+    "Bathroom and kitchen installations",
+    "Central heating systems",
+    "Blocked drains and pipes",
+    "Tap and toilet repairs",
+    "Gas safety certificates",
+    "Radiator installation and repairs"
+  ],
+  "areasServed": {
+    "heading": "Covering Dartford and Surrounding Areas",
+    "description": "Our plumbers serve Dartford and the local area including:",
+    "areas": [
+      "Stone",
+      "Swanscombe",
+      "Greenhithe",
+      "Darenth",
+      "Wilmington",
+      "Crayford",
+      "Erith",
+      "Barnehurst"
+    ]
+  },
+  "cta": {
+    "heading": "Find Your Local Dartford Plumber Today",
+    "description": "Browse our directory of trusted, verified plumbers below. Each listing includes their contact details, specialisms, customer reviews, and response times.",
+    "button": "Browse Plumbers"
+  },
+  "meta": {
+    "title": "Dartford Plumber Directory — 10 Trusted Local Plumbers | 4.8+ Stars",
+    "description": "Find trusted plumbers in Dartford. Rated 4.8+ stars by real customers. Emergency call-outs, boiler repairs, installations. Call direct — no booking fees."
+  }
+}

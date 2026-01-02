@@ -1,0 +1,41 @@
+---
+interface Props {
+  headline: string;
+  subheadline: string;
+  primaryCTA: string;
+  primaryCTAHref: string;
+  secondaryCTA?: string;
+  secondaryCTAHref?: string;
+}
+
+const { headline, subheadline, primaryCTA, primaryCTAHref, secondaryCTA, secondaryCTAHref } = Astro.props;
+---
+
+<section class="relative bg-blue-600 text-white py-20 px-4">
+  <div class="max-w-6xl mx-auto">
+    <div class="max-w-3xl">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+        {headline}
+      </h1>
+      <p class="text-xl md:text-2xl mb-8 text-blue-50">
+        {subheadline}
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a
+          href={primaryCTAHref}
+          class="inline-block bg-white text-blue-600 font-bold py-4 px-8 rounded-lg hover:bg-blue-50 transition-colors text-center text-lg"
+        >
+          {primaryCTA}
+        </a>
+        {secondaryCTA && secondaryCTAHref && (
+          <a
+            href={secondaryCTAHref}
+            class="inline-block bg-blue-700 text-white font-bold py-4 px-8 rounded-lg hover:bg-blue-800 transition-colors text-center text-lg border-2 border-white"
+          >
+            {secondaryCTA}
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+</section>

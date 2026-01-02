@@ -1,0 +1,228 @@
+---
+const phoneNumber = "01322 936116";
+const phoneHref = `tel:${phoneNumber.replace(/\s/g, '')}`;
+
+const navLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'Directory', href: '/#plumbers' },
+  { label: 'Emergency', href: '/emergency-plumbing-repairs-dartford' },
+  { label: 'Heating', href: '/boiler-heating-services-dartford' },
+  { label: 'Bathrooms', href: '/bathroom-installation-dartford' },
+  { label: 'Drainage', href: '/drainage-services-dartford' }
+];
+---
+
+<header class="header">
+  <div class="header__container">
+    <a href="/" class="header__logo">
+      <div class="header__logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 16.3c2.2 0 4-1.8 4-4 0-3.3-4-7-4-7s-4 3.7-4 7c0 2.2 1.8 4 4 4z"/>
+          <path d="M12 18H20"/>
+          <path d="M18 14L22 18L18 22"/>
+        </svg>
+      </div>
+      <div class="header__logo-text">
+        <span class="header__logo-name">Dartford<span class="text-primary">Plumber</span></span>
+      </div>
+    </a>
+
+    <!-- Navigation -->
+    <nav class="header__nav">
+      <ul class="header__nav-list">
+        {navLinks.map(link => (
+          <li class="header__nav-item">
+            <a href={link.href} class="header__nav-link">{link.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="header__actions">
+      <a href={phoneHref} class="header__phone" aria-label={`Call ${phoneNumber}`}>
+        <svg class="header__phone-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+        </svg>
+        <span class="header__phone-number">{phoneNumber}</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .header {
+    background-color: white;
+    border-bottom: 1px solid var(--color-gray-200);
+    position: sticky;
+    top: 0;
+    z-index: var(--z-overlay);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+
+  .header__container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: var(--space-4) var(--space-6);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  .header__logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    text-decoration: none;
+    transition: opacity var(--transition-base);
+  }
+
+  .header__logo:hover {
+    opacity: 0.8;
+  }
+
+  .header__logo-icon {
+    width: 36px;
+    height: 36px;
+    background-color: var(--color-primary);
+    color: white;
+    border-radius: var(--border-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-2);
+    flex-shrink: 0;
+  }
+
+  .header__logo-name {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: var(--font-extrabold);
+    color: var(--color-gray-950);
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
+
+  .text-primary {
+    color: var(--color-primary);
+  }
+
+  /* Navigation */
+  .header__nav {
+    display: none;
+    justify-self: center;
+  }
+
+  .header__nav-list {
+    display: flex;
+    gap: var(--space-2);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+  }
+
+  .header__nav-item {
+    margin: 0;
+  }
+
+  .header__nav-link {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-text);
+    text-decoration: none;
+    transition: all var(--transition-base);
+    padding: var(--space-2) var(--space-3);
+    display: block;
+    border-radius: var(--border-radius-md);
+  }
+
+  .header__nav-link:hover {
+    color: var(--color-primary);
+    background-color: var(--color-gray-50);
+  }
+
+  /* Phone CTA */
+  .header__actions {
+    justify-self: end;
+  }
+
+  .header__phone {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    background-color: var(--color-primary);
+    color: white;
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-weight: var(--font-bold);
+    font-size: var(--text-base);
+    transition: all var(--transition-base);
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 2px 4px rgba(29, 78, 216, 0.15);
+    white-space: nowrap;
+  }
+
+  .header__phone:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(29, 78, 216, 0.25);
+  }
+
+  .header__phone-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .header__phone-number {
+    font-size: var(--text-base);
+  }
+
+  /* Desktop Navigation */
+  @media (min-width: 1100px) {
+    .header__nav {
+      display: block;
+    }
+  }
+
+  /* Tablet */
+  @media (max-width: 1099px) {
+    .header__container {
+      grid-template-columns: auto 1fr;
+      gap: var(--space-4);
+    }
+
+    .header__actions {
+      justify-self: end;
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    .header__container {
+      padding: var(--space-3) var(--space-4);
+    }
+
+    .header__logo-icon {
+      width: 32px;
+      height: 32px;
+    }
+
+    .header__logo-name {
+      font-size: var(--text-base);
+    }
+
+    .header__phone-number {
+      display: none;
+    }
+
+    .header__phone {
+      padding: var(--space-3);
+      min-width: 48px;
+      min-height: 48px;
+      justify-content: center;
+    }
+  }
+</style>

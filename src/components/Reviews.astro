@@ -1,0 +1,193 @@
+---
+interface Review {
+  name: string;
+  stars: number;
+  text: string | null;
+  reviewUrl: string;
+}
+
+interface Props {
+  companyName: string;
+}
+
+const { companyName } = Astro.props;
+
+// Import reviews data
+import reviewsData from '../data/plumber-reviews.json';
+
+// Find reviews for this company
+const companyReviews = reviewsData.find(
+  (entry) => entry.company === companyName
+);
+
+const reviews: Review[] = companyReviews?.reviews.filter((r) => r.text !== null) || [];
+---
+
+{reviews.length > 0 && (
+  <section class="reviews-section">
+    <div class="reviews-section__container section-container">
+      <h2 class="reviews-section__heading">Customer Reviews</h2>
+      <p class="reviews-section__subtitle">
+        Real reviews from Google Maps customers
+      </p>
+
+      <div class="reviews-grid">
+        {reviews.map((review) => (
+          <article class="review-card">
+            <div class="review-card__header">
+              <div class="review-card__rating">
+                {Array.from({ length: review.stars }).map(() => (
+                  <svg class="review-card__star" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+              <a
+                href={review.reviewUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="review-card__link"
+                aria-label="View review on Google Maps"
+              >
+                <svg class="review-card__google-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd" />
+                </svg>
+              </a>
+            </div>
+
+            <blockquote class="review-card__text">
+              "{review.text}"
+            </blockquote>
+
+            <footer class="review-card__footer">
+              <cite class="review-card__author">{review.name}</cite>
+            </footer>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .reviews-section {
+    background: var(--color-bg);
+    padding: var(--space-16) var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .reviews-section {
+      padding: var(--space-20) var(--space-8);
+    }
+  }
+
+  .section-container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .reviews-section__heading {
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    font-weight: var(--font-bold);
+    color: var(--color-gray-950);
+    text-align: center;
+    margin-bottom: var(--space-2);
+  }
+
+  .reviews-section__subtitle {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    color: var(--color-text-muted);
+    text-align: center;
+    margin-bottom: var(--space-12);
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .reviews-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .reviews-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .review-card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--border-radius-xl);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    transition: all var(--transition-base);
+  }
+
+  .review-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .review-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .review-card__rating {
+    display: flex;
+    gap: 2px;
+  }
+
+  .review-card__star {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #facc15;
+  }
+
+  .review-card__link {
+    color: var(--color-gray-400);
+    transition: color var(--transition-fast);
+  }
+
+  .review-card__link:hover {
+    color: var(--color-primary);
+  }
+
+  .review-card__google-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .review-card__text {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+    color: var(--color-text);
+    font-style: normal;
+    flex-grow: 1;
+  }
+
+  .review-card__footer {
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-gray-200);
+  }
+
+  .review-card__author {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    font-style: normal;
+    color: var(--color-gray-950);
+  }
+</style>

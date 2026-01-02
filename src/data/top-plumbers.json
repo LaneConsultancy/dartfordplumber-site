@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Local Plumbing Services",
+    "address": "6, Mazarine Lodge, Riverside Wharf, Dartford DA1 5TN",
+    "phone": "07392 234913",
+    "website": "https://local-plumbing-services.co.uk/dartford-kent",
+    "rating": 5,
+    "categories": ["Plumber", "Bathroom Renovator", "Drainage service", "Gas engineer", "Central Heating Service"]
+  },
+  {
+    "name": "Supreme Plumbers",
+    "address": "CKR House • 70, East Hill, Dartford DA1 1RZ",
+    "phone": "0333 123 3698",
+    "website": "http://www.supremeplumbers.co.uk/",
+    "rating": 5,
+    "categories": ["Plumber", "Bathroom Renovator", "Gas engineer", "Central Heating Service"]
+  },
+  {
+    "name": "Provide Plumbing & Heating",
+    "address": "165 Hawley Rd, Dartford DA1 1AU",
+    "phone": "07976 096125",
+    "website": "https://provideplumbing.co.uk/",
+    "rating": 5,
+    "categories": ["Plumber"]
+  },
+  {
+    "name": "K J Heating",
+    "address": "82 North Rd, Dartford DA1 3NB",
+    "phone": "07939 815566",
+    "website": "https://www.kjhemergencyplumbersdartford.co.uk/",
+    "rating": 5,
+    "categories": ["Plumber"]
+  },
+  {
+    "name": "The Plumber",
+    "address": "Office 1, 8 Twisleton Court, Priory Hill, Dartford DA1 2EN",
+    "phone": "01322 517147",
+    "website": "https://theplumber.co.uk/gmbd/",
+    "rating": 4.8,
+    "categories": ["Plumber"]
+  },
+  {
+    "name": "Gaff Plumbing And Heating",
+    "address": "13 Beech Walk, Dartford DA1 4NP",
+    "phone": "07415 460990",
+    "website": "http://gaffheating.co.uk/",
+    "rating": 4.9,
+    "categories": ["Plumber"]
+  },
+  {
+    "name": "Dartford Plumbing Mechanical Service",
+    "address": "15 Ruskin Grove, Dartford DA1 5DD",
+    "phone": "01322 476492",
+    "website": "http://dartford.plumbing/",
+    "rating": 5,
+    "categories": ["Plumber"]
+  },
+  {
+    "name": "Horizon Plumbing, Heating & Bathrooms",
+    "address": "143 Dartford Rd, Dartford DA1 3EN",
+    "phone": "01322 930583",
+    "website": "http://www.horizonphbatrooms.com/",
+    "rating": 5,
+    "categories": ["Plumber", "Bathroom Supply Shop", "Boiler supplier", "Heating equipment supplier", "Plumbers' merchant"]
+  },
+  {
+    "name": "Jaguar Plumbing and Drainage",
+    "address": "The Cottage, Hopeleigh, Arnolds Ln, Sutton at Hone, Dartford DA4 9HE",
+    "phone": "07739 364933",
+    "website": "http://jaguarplumbing.co.uk/",
+    "rating": 5,
+    "categories": ["Plumber", "Drainage service", "Heating equipment supplier"]
+  },
+  {
+    "name": "Allen&Co Plumbing and Heating Services Ltd",
+    "address": "Mount Pleasant Walk, Dartford, Bexley DA5 1PT",
+    "phone": "020 3576 1971",
+    "website": "http://allenandco.uk/",
+    "rating": 5,
+    "categories": ["Plumber", "Gas engineer"]
+  }
+]

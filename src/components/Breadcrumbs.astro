@@ -1,0 +1,94 @@
+---
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  items: BreadcrumbItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <div class="breadcrumbs__container">
+    <ol class="breadcrumbs__list">
+      {items.map((item, index) => (
+        <li class="breadcrumbs__item">
+          {item.href ? (
+            <a href={item.href} class="breadcrumbs__link">
+              {item.label}
+            </a>
+          ) : (
+            <span class="breadcrumbs__current">{item.label}</span>
+          )}
+          {index < items.length - 1 && (
+            <svg
+              class="breadcrumbs__separator"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          )}
+        </li>
+      ))}
+    </ol>
+  </div>
+</nav>
+
+<style>
+  .breadcrumbs {
+    padding: var(--space-4) var(--space-6);
+    background-color: var(--color-bg);
+    border-bottom: 1px solid var(--color-gray-200);
+  }
+
+  .breadcrumbs__container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .breadcrumbs__list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .breadcrumbs__item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+  }
+
+  .breadcrumbs__link {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .breadcrumbs__link:hover {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+  }
+
+  .breadcrumbs__current {
+    color: var(--color-text-muted);
+  }
+
+  .breadcrumbs__separator {
+    width: 1rem;
+    height: 1rem;
+    color: var(--color-gray-300);
+  }
+</style>

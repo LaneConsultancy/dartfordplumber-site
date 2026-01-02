@@ -1,0 +1,478 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroV2 from '../components/HeroV2.astro';
+import PlumberCardV2 from '../components/PlumberCardV2.astro';
+import Footer from '../components/Footer.astro';
+import plumbersData from '../data/top-plumbers.json';
+
+// Generate slugs for plumbers
+const plumbers = plumbersData.map(plumber => ({
+  ...plumber,
+  slug: plumber.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+}));
+
+// Schema.org structured data for Boiler & Heating Service
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Boiler and Heating Services",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Dartford Plumbers",
+    "areaServed": {
+      "@type": "City",
+      "name": "Dartford"
+    }
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Dartford",
+    "containedInPlace": {
+      "@type": "AdministrativeArea",
+      "name": "Kent"
+    }
+  },
+  "description": "Professional boiler installation, servicing, and repair in Dartford. Qualified heating engineers for all heating system work.",
+  "availableChannel": {
+    "@type": "ServiceChannel",
+    "servicePhone": {
+      "@type": "ContactPoint",
+      "telephone": "01322 936116",
+      "contactType": "Customer Service"
+    }
+  }
+};
+---
+
+<BaseLayout
+  title="Boiler & Heating Services Dartford | Qualified Heating Engineers"
+  description="Expert boiler installation, servicing and repairs in Dartford. Qualified heating engineers for boiler breakdowns, annual services and new installations."
+>
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+
+  <!-- Hero Section -->
+  <HeroV2
+    headline="Boiler & Heating Services Dartford"
+    subheadline="Professional Engineers | Installation | Servicing | Repairs"
+    backgroundImage="/images/service-boiler-heating.jpg"
+    primaryCTA="Find Heating Engineers"
+    primaryCTAHref="#heating-engineers"
+    secondaryCTA="Call Now: 01322 936116"
+    secondaryCTAHref="tel:01322936116"
+  />
+
+  <!-- Service Introduction -->
+  <section class="service-intro">
+    <div class="service-intro__container section-container">
+      <h2 class="section-heading">Professional Boiler & Heating Services in Dartford</h2>
+      <div class="service-intro__content">
+        <p class="service-intro__text">
+          Keep your home warm and comfortable all year round with professional boiler and heating services from Dartford's trusted heating engineers. Whether you need a new boiler installation, annual service, or emergency repair, our qualified heating specialists are here to help.
+        </p>
+        <p class="service-intro__text">
+          Our heating engineers are experienced professionals qualified to work on all makes and models of boilers and central heating systems. We provide transparent pricing, reliable service, and expert advice to keep your heating running efficiently.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Offered -->
+  <section class="services-offered">
+    <div class="services-offered__container section-container">
+      <h2 class="section-heading">Our Boiler & Heating Services</h2>
+      <div class="services-offered__grid">
+        <div class="service-card">
+          <h3 class="service-card__title">Boiler Installation</h3>
+          <p class="service-card__description">
+            New boiler installations from leading manufacturers. We'll help you choose the right boiler for your home and budget, with professional installation and full warranty.
+          </p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Boiler Servicing</h3>
+          <p class="service-card__description">
+            Annual boiler services to keep your warranty valid and your heating system running efficiently. Includes safety checks, cleaning, and performance optimization.
+          </p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Boiler Repairs</h3>
+          <p class="service-card__description">
+            Fast, reliable boiler repairs for all makes and models. Same-day service available for breakdowns, with most parts carried in stock for quick fixes.
+          </p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Central Heating Installation</h3>
+          <p class="service-card__description">
+            Complete central heating system installation including radiators, pipework, and controls. Perfect for new builds, extensions, or full system upgrades.
+          </p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Radiator Installation</h3>
+          <p class="service-card__description">
+            New radiator installations and replacements. Upgrade to modern, efficient radiators for better heating and lower energy bills.
+          </p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Power Flushing</h3>
+          <p class="service-card__description">
+            Professional power flushing to remove sludge and debris from your heating system, improving efficiency and extending boiler life.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Boiler Types -->
+  <section class="boiler-types">
+    <div class="boiler-types__container section-container">
+      <h2 class="section-heading">Boiler Types We Install & Service</h2>
+      <div class="boiler-types__grid">
+        <div class="type-card">
+          <h3 class="type-card__title">Combi Boilers</h3>
+          <p class="type-card__description">
+            The most popular choice for UK homes. Combi boilers provide instant hot water on demand and don't require a separate tank, saving space.
+          </p>
+        </div>
+        <div class="type-card">
+          <h3 class="type-card__title">System Boilers</h3>
+          <p class="type-card__description">
+            Ideal for larger homes with multiple bathrooms. System boilers work with a hot water cylinder to deliver hot water to several outlets simultaneously.
+          </p>
+        </div>
+        <div class="type-card">
+          <h3 class="type-card__title">Conventional Boilers</h3>
+          <p class="type-card__description">
+            Traditional boilers with separate hot water cylinder and cold water tank. Best suited for homes with older heating systems or high water demand.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Section -->
+  <section class="why-choose">
+    <div class="why-choose__container section-container">
+      <h2 class="section-heading">Why Choose Our Heating Engineers?</h2>
+      <div class="why-choose__grid">
+        <div class="feature-card">
+          <div class="feature-card__icon">✓</div>
+          <h3 class="feature-card__title">Qualified Professionals</h3>
+          <p class="feature-card__description">
+            Our heating engineers are qualified professionals who maintain appropriate certifications for safe, compliant boiler and heating work.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">⚙️</div>
+          <h3 class="feature-card__title">All Makes & Models</h3>
+          <p class="feature-card__description">
+            We work on all boiler brands including Worcester Bosch, Vaillant, Ideal, Baxi, and more. No job too big or small.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">💷</div>
+          <h3 class="feature-card__title">Transparent Pricing</h3>
+          <p class="feature-card__description">
+            Clear, upfront quotes with no hidden costs. We'll explain exactly what work is needed and how much it will cost before we start.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">🛡️</div>
+          <h3 class="feature-card__title">Guaranteed Work</h3>
+          <p class="feature-card__description">
+            All installations and repairs come with our workmanship guarantee, giving you peace of mind for years to come.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Heating Engineers Directory -->
+  <section id="heating-engineers" class="engineers-directory">
+    <div class="engineers-directory__container section-container">
+      <h2 class="section-heading">Qualified Heating Engineers in Dartford</h2>
+      <p class="section-subheading">
+        Contact these trusted heating engineers for all your boiler and heating needs in Dartford.
+      </p>
+      <div class="engineers-directory__grid">
+        {plumbers.map((plumber) => (
+          <PlumberCardV2 {...plumber} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Coverage Area -->
+  <section class="coverage-area">
+    <div class="coverage-area__container section-container">
+      <h2 class="section-heading">Heating Services Coverage</h2>
+      <p class="coverage-area__text">
+        Our heating engineers serve Dartford and all surrounding areas including Greenhithe, Stone, Wilmington, Swanscombe, Bean, Longfield, Sutton-at-Hone, and throughout the DA1, DA2, and DA3 postcodes.
+      </p>
+      <div class="coverage-area__badges">
+        <span class="coverage-badge">Dartford DA1</span>
+        <span class="coverage-badge">Dartford DA2</span>
+        <span class="coverage-badge">Dartford DA3</span>
+        <span class="coverage-badge">Greenhithe</span>
+        <span class="coverage-badge">Stone</span>
+        <span class="coverage-badge">Swanscombe</span>
+        <span class="coverage-badge">Wilmington</span>
+        <span class="coverage-badge">Longfield</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <div class="final-cta__container section-container">
+      <h2 class="final-cta__heading">Need a Heating Engineer?</h2>
+      <p class="final-cta__description">
+        Get in touch with one of our trusted heating engineers for a free quote on your boiler or heating work.
+      </p>
+      <a href="#heating-engineers" class="final-cta__button">
+        View Heating Engineers
+      </a>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* Base Section Styles */
+  section {
+    padding: var(--space-16) var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    section {
+      padding: var(--space-20) var(--space-8);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    section {
+      padding: var(--space-24) var(--space-10);
+    }
+  }
+
+  .section-container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .section-heading {
+    font-family: var(--font-display);
+    font-size: var(--text-4xl);
+    font-weight: var(--font-bold);
+    line-height: var(--leading-tight);
+    color: var(--color-gray-950);
+    text-align: center;
+    margin: 0 0 var(--space-12) 0;
+  }
+
+  .section-subheading {
+    font-family: var(--font-body);
+    font-size: var(--text-lg);
+    font-weight: var(--font-normal);
+    line-height: var(--leading-relaxed);
+    color: var(--color-text-muted);
+    text-align: center;
+    max-width: 70ch;
+    margin: calc(var(--space-12) * -1 + var(--space-4)) auto var(--space-12) auto;
+  }
+
+  /* Service Intro */
+  .service-intro {
+    background: var(--color-bg);
+  }
+
+  .service-intro__container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .service-intro__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .service-intro__text {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    color: var(--color-text-muted);
+    text-align: center;
+  }
+
+  /* Services Offered & Boiler Types */
+  .services-offered {
+    background: var(--color-bg-alt);
+  }
+
+  .services-offered__grid,
+  .boiler-types__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .service-card,
+  .type-card {
+    background: white;
+    padding: var(--space-6);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+  }
+
+  .service-card:hover,
+  .type-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .service-card__title,
+  .type-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    color: var(--color-gray-950);
+    margin-bottom: var(--space-3);
+  }
+
+  .service-card__description,
+  .type-card__description {
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+    color: var(--color-text-muted);
+  }
+
+  /* Boiler Types */
+  .boiler-types {
+    background: var(--color-bg);
+  }
+
+  /* Why Choose */
+  .why-choose {
+    background: var(--color-bg-alt);
+  }
+
+  .why-choose__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-8);
+  }
+
+  .feature-card {
+    text-align: center;
+  }
+
+  .feature-card__icon {
+    font-size: var(--text-5xl);
+    margin-bottom: var(--space-4);
+  }
+
+  .feature-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    color: var(--color-gray-950);
+    margin-bottom: var(--space-3);
+  }
+
+  .feature-card__description {
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+    color: var(--color-text-muted);
+  }
+
+  /* Engineers Directory */
+  .engineers-directory {
+    background: var(--color-bg);
+  }
+
+  .engineers-directory__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--space-8);
+  }
+
+  /* Coverage Area */
+  .coverage-area {
+    background: var(--color-bg-alt);
+    text-align: center;
+  }
+
+  .coverage-area__text {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    color: var(--color-text-muted);
+    max-width: 80ch;
+    margin: 0 auto var(--space-8) auto;
+  }
+
+  .coverage-area__badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+  }
+
+  .coverage-badge {
+    display: inline-block;
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-primary);
+    background-color: var(--color-gray-100);
+    border-radius: var(--border-radius-full);
+    transition: all var(--transition-base);
+  }
+
+  .coverage-badge:hover {
+    background-color: var(--color-gray-200);
+    transform: translateY(-2px);
+  }
+
+  /* Final CTA */
+  .final-cta {
+    background: var(--color-primary);
+    color: white;
+    text-align: center;
+  }
+
+  .final-cta__heading {
+    color: white;
+    margin-bottom: var(--space-4);
+  }
+
+  .final-cta__description {
+    color: var(--color-gray-200);
+    margin-bottom: var(--space-8);
+    font-size: var(--text-lg);
+    max-width: 60ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .final-cta__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4) var(--space-8);
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
+    text-decoration: none;
+    background-color: var(--color-accent);
+    color: white;
+    border-radius: var(--border-radius-lg);
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .final-cta__button:hover {
+    background-color: var(--color-accent-dark);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl);
+  }
+</style>

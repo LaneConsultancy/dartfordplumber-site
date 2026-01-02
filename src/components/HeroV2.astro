@@ -1,0 +1,174 @@
+---
+interface Props {
+  headline: string;
+  subheadline: string;
+  backgroundImage: string;
+  primaryCTA: string;
+  primaryCTAHref: string;
+  secondaryCTA?: string;
+  secondaryCTAHref?: string;
+}
+
+const {
+  headline,
+  subheadline,
+  backgroundImage,
+  primaryCTA,
+  primaryCTAHref,
+  secondaryCTA,
+  secondaryCTAHref
+} = Astro.props;
+---
+
+<section class="hero-v2" style={`background-image: linear-gradient(to bottom, rgba(12, 19, 35, 0.7), rgba(12, 19, 35, 0.8)), url(${backgroundImage});`}>
+  <div class="hero-v2__content">
+    <div class="hero-v2__container">
+      <h1 class="hero-v2__headline">
+        {headline}
+      </h1>
+      <p class="hero-v2__subheadline">
+        {subheadline}
+      </p>
+      <div class="hero-v2__cta-group">
+        <a href={primaryCTAHref} class="hero-v2__cta hero-v2__cta--primary">
+          {primaryCTA}
+        </a>
+        {secondaryCTA && secondaryCTAHref && (
+          <a href={secondaryCTAHref} class="hero-v2__cta hero-v2__cta--secondary">
+            {secondaryCTA === "01322 936116" ? (
+              <>
+                <svg class="hero-v2__phone-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                </svg>
+                {secondaryCTA}
+              </>
+            ) : secondaryCTA}
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-v2 {
+    position: relative;
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background-color: var(--color-gray-950);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+  }
+
+  .hero-v2__content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: var(--space-16) var(--space-6);
+  }
+
+  .hero-v2__container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-v2__headline {
+    font-family: var(--font-display);
+    font-size: var(--text-5xl);
+    font-weight: var(--font-bold);
+    line-height: 1.1;
+    color: white;
+    margin: 0 0 var(--space-6) 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .hero-v2__subheadline {
+    font-family: var(--font-body);
+    font-size: var(--text-xl);
+    line-height: var(--leading-relaxed);
+    color: var(--color-gray-100);
+    margin: 0 0 var(--space-10) 0;
+    max-width: 65ch;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .hero-v2__cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-4);
+  }
+
+  .hero-v2__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-8);
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
+    text-decoration: none;
+    border-radius: var(--border-radius-lg);
+    transition: all var(--transition-base);
+    min-height: 44px;
+  }
+
+  .hero-v2__cta--primary {
+    background-color: var(--color-primary);
+    color: white;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .hero-v2__cta--primary:hover {
+    background-color: var(--color-primary-light);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .hero-v2__cta--secondary {
+    background-color: white;
+    color: var(--color-accent);
+    box-shadow: var(--shadow-md);
+  }
+
+  .hero-v2__cta--secondary:hover {
+    background-color: var(--color-gray-50);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .hero-v2__phone-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  @media (max-width: 640px) {
+    .hero-v2 {
+      min-height: 60vh;
+    }
+
+    .hero-v2__headline {
+      font-size: var(--text-3xl);
+    }
+
+    .hero-v2__subheadline {
+      font-size: var(--text-base);
+    }
+
+    .hero-v2__cta-group {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .hero-v2__cta {
+      width: 100%;
+    }
+  }
+</style>

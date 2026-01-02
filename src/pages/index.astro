@@ -1,16 +1,365 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroV2 from '../components/HeroV2.astro';
+import TrustBadge from '../components/TrustBadge.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import PlumberCardV2 from '../components/PlumberCardV2.astro';
+import Footer from '../components/Footer.astro';
+import homepageCopy from '../data/homepage-copy.json';
+import plumbersData from '../data/top-plumbers.json';
 
+// Generate slugs for plumbers
+const plumbers = plumbersData.map(plumber => ({
+  ...plumber,
+  slug: plumber.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+}));
+
+// Service cards data
+const services = [
+  {
+    title: "Emergency Repairs",
+    description: "24/7 urgent plumbing fixes",
+    image: "/images/service-emergency-repairs.jpg",
+    accentColor: "#EF4444",
+    href: "/emergency-plumbing-repairs-dartford"
+  },
+  {
+    title: "Boiler & Heating",
+    description: "Installation and maintenance",
+    image: "/images/service-boiler-heating.jpg",
+    accentColor: "#FF6B35",
+    href: "/boiler-heating-services-dartford"
+  },
+  {
+    title: "Bathroom Installations",
+    description: "Complete bathroom renovations",
+    image: "/images/service-bathroom-install.jpg",
+    accentColor: "#00D4AA",
+    href: "/bathroom-installation-dartford"
+  },
+  {
+    title: "Drainage Services",
+    description: "Blocked drains and repairs",
+    image: "/images/service-drainage.jpg",
+    accentColor: "#0066FF",
+    href: "/drainage-services-dartford"
+  }
+];
+
+// Trust badge data (mapped from existing "why" section)
+const trustBadges = [
+  { icon: "check", text: homepageCopy.why.reasons[0].title, variant: "primary" },
+  { icon: "star", text: homepageCopy.why.reasons[1].title, variant: "teal" },
+  { icon: "shield", text: homepageCopy.why.reasons[2].title, variant: "accent" },
+  { icon: "users", text: homepageCopy.why.reasons[3].title, variant: "primary" }
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title={homepageCopy.meta.title}
+  description={homepageCopy.meta.description}
+>
+  <!-- Hero Section -->
+  <HeroV2
+    headline={homepageCopy.hero.headline}
+    subheadline={homepageCopy.hero.subheadline}
+    backgroundImage="/images/hero-plumbing-workspace.jpg"
+    primaryCTA={homepageCopy.hero.cta.primary}
+    primaryCTAHref="#plumbers"
+    secondaryCTA={homepageCopy.hero.cta.secondary}
+    secondaryCTAHref="tel:01322936116"
+  />
+
+  <!-- Intro Section -->
+  <section class="intro-section">
+    <div class="intro-section__container section-container">
+      <h2 class="intro-section__heading section-heading">
+        {homepageCopy.intro.heading}
+      </h2>
+      <div class="intro-section__content">
+        {homepageCopy.intro.body.map((paragraph) => (
+          <p class="intro-section__paragraph">{paragraph}</p>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Use This Directory - Trust Badges -->
+  <section class="trust-section">
+    <div class="trust-section__container section-container">
+      <h2 class="trust-section__heading section-heading">
+        {homepageCopy.why.heading}
+      </h2>
+      <div class="trust-section__grid">
+        {homepageCopy.why.reasons.map((reason, index) => (
+          <div class="trust-section__item">
+            <TrustBadge
+              icon={trustBadges[index].icon}
+              text={reason.title}
+              variant={trustBadges[index].variant}
+            />
+            <p class="trust-section__description">{reason.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Cards Section -->
+  <section class="services-section">
+    <div class="services-section__container section-container">
+      <h2 class="services-section__heading section-heading">
+        Our Plumbing Services
+      </h2>
+      <p class="services-section__subheading section-subheading">
+        {homepageCopy.servicesIntro}
+      </p>
+      <div class="services-section__grid">
+        {services.map((service) => (
+          <ServiceCard {...service} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Plumbers Directory -->
+  <section id="plumbers" class="directory-section">
+    <div class="directory-section__container section-container">
+      <h2 class="directory-section__heading section-heading">
+        Trusted Dartford Plumbers
+      </h2>
+      <div class="directory-section__grid">
+        {plumbers.map((plumber) => (
+          <PlumberCardV2 {...plumber} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Areas Served -->
+  <section class="areas-section">
+    <div class="areas-section__container section-container">
+      <h2 class="areas-section__heading section-heading">
+        {homepageCopy.areasServed.heading}
+      </h2>
+      <p class="areas-section__description section-subheading">
+        {homepageCopy.areasServed.description}
+      </p>
+      <div class="areas-section__badges">
+        {homepageCopy.areasServed.areas.map((area) => (
+          <span class="areas-section__badge">{area}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <div class="final-cta__container section-container">
+      <h2 class="final-cta__heading section-heading">
+        {homepageCopy.cta.heading}
+      </h2>
+      <p class="final-cta__description">
+        {homepageCopy.cta.description}
+      </p>
+      <a href="#plumbers" class="final-cta__button">
+        {homepageCopy.cta.button}
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* Base Section Styles */
+  section {
+    padding: var(--space-16) var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    section {
+      padding: var(--space-20) var(--space-8);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    section {
+      padding: var(--space-24) var(--space-10);
+    }
+  }
+
+  .section-container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .section-heading {
+    font-family: var(--font-display);
+    font-size: var(--text-4xl);
+    font-weight: var(--font-bold);
+    line-height: var(--leading-tight);
+    color: var(--color-gray-950);
+    text-align: center;
+    margin: 0 0 var(--space-12) 0;
+  }
+
+  .section-subheading {
+    font-family: var(--font-body);
+    font-size: var(--text-lg);
+    font-weight: var(--font-normal);
+    line-height: var(--leading-relaxed);
+    color: var(--color-text-muted);
+    text-align: center;
+    max-width: 70ch;
+    margin: calc(var(--space-12) * -1 + var(--space-4)) auto var(--space-12) auto;
+  }
+
+  /* Intro Section */
+  .intro-section {
+    background: var(--color-bg);
+  }
+
+  .intro-section__container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .intro-section__heading {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--space-6);
+  }
+
+  .intro-section__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .intro-section__paragraph {
+    font-size: var(--text-lg);
+    color: var(--color-text-muted);
+  }
+
+  /* Trust Section */
+  .trust-section {
+    background: var(--color-bg-alt);
+  }
+
+  .trust-section__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-8);
+  }
+
+  .trust-section__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+    text-align: center;
+  }
+
+  .trust-section__description {
+    font-size: var(--text-base);
+    color: var(--color-text-muted);
+  }
+
+  /* Services Section */
+  .services-section {
+    background: var(--color-bg);
+  }
+
+  .services-section__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-8);
+  }
+
+  /* Directory Section */
+  .directory-section {
+    background: var(--color-bg-alt);
+  }
+
+  .directory-section__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--space-8);
+  }
+
+  /* Areas Section */
+  .areas-section {
+    background: var(--color-bg);
+  }
+
+  .areas-section__container {
+    max-width: 1024px;
+    text-align: center;
+  }
+
+  .areas-section__badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+  }
+
+  .areas-section__badge {
+    display: inline-block;
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-primary);
+    background-color: var(--color-gray-100);
+    border-radius: var(--border-radius-full);
+    transition: all var(--transition-base);
+  }
+
+  .areas-section__badge:hover {
+    background-color: var(--color-gray-200);
+    transform: translateY(-2px);
+  }
+
+  /* Final CTA */
+  .final-cta {
+    background: var(--color-primary);
+    color: white;
+    text-align: center;
+  }
+
+  .final-cta__heading {
+    color: white;
+    margin-bottom: var(--space-4);
+  }
+
+  .final-cta__description {
+    color: var(--color-gray-200);
+    margin-bottom: var(--space-8);
+    max-width: 60ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .final-cta__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4) var(--space-8);
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
+    text-decoration: none;
+    background-color: var(--color-accent);
+    color: white;
+    border-radius: var(--border-radius-lg);
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .final-cta__button:hover {
+    background-color: var(--color-accent-dark);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl);
+  }
+</style>

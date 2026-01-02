@@ -1,0 +1,512 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroV2 from '../components/HeroV2.astro';
+import PlumberCardV2 from '../components/PlumberCardV2.astro';
+import Footer from '../components/Footer.astro';
+import plumbersData from '../data/top-plumbers.json';
+
+// Generate slugs for plumbers
+const plumbers = plumbersData.map(plumber => ({
+  ...plumber,
+  slug: plumber.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+}));
+
+// Schema.org structured data for Bathroom Installation Service
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Bathroom Installation",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Dartford Plumbers",
+    "areaServed": {
+      "@type": "City",
+      "name": "Dartford"
+    }
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Dartford",
+    "containedInPlace": {
+      "@type": "AdministrativeArea",
+      "name": "Kent"
+    }
+  },
+  "description": "Complete bathroom installation and renovation services in Dartford. Professional plumbers for bathroom suites, wetrooms, showers, and full refurbishments.",
+  "availableChannel": {
+    "@type": "ServiceChannel",
+    "servicePhone": {
+      "@type": "ContactPoint",
+      "telephone": "01322 936116",
+      "contactType": "Customer Service"
+    }
+  }
+};
+---
+
+<BaseLayout
+  title="Bathroom Installation Dartford | Complete Bathroom Fitting Services"
+  description="Professional bathroom installation and fitting in Dartford. Expert plumbers for new bathrooms, wetrooms, shower installations and complete bathroom renovations."
+>
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+
+  <!-- Hero Section -->
+  <HeroV2
+    headline="Bathroom Installation Dartford"
+    subheadline="Complete Bathroom Fitting | Wetrooms | Shower Installations"
+    backgroundImage="/images/service-bathroom-install.jpg"
+    primaryCTA="Find Bathroom Fitters"
+    primaryCTAHref="#bathroom-fitters"
+    secondaryCTA="Call Now: 01322 936116"
+    secondaryCTAHref="tel:01322936116"
+  />
+
+  <!-- Service Introduction -->
+  <section class="service-intro">
+    <div class="service-intro__container section-container">
+      <h2 class="section-heading">Professional Bathroom Installation in Dartford</h2>
+      <div class="service-intro__content">
+        <p class="service-intro__text">
+          Transform your bathroom with professional installation services from Dartford's trusted bathroom fitting specialists. Whether you're planning a complete bathroom renovation, installing a new suite, or adding a wetroom, our experienced plumbers deliver high-quality workmanship on every project.
+        </p>
+        <p class="service-intro__text">
+          From initial design and planning through to final installation and finishing touches, we handle every aspect of your bathroom project. Our plumbers work with leading bathroom brands and can source quality fixtures and fittings to suit any budget and style.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Offered -->
+  <section class="services-offered">
+    <div class="services-offered__container section-container">
+      <h2 class="section-heading">Our Bathroom Installation Services</h2>
+      <div class="services-offered__grid">
+        <div class="service-card">
+          <h3 class="service-card__title">Complete Bathroom Installations</h3>
+          <p class="service-card__description">
+            Full bathroom renovations from start to finish. We handle everything from removing your old suite to installing your new bathroom, including tiling, electrics, and decoration.
+          </p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Wetroom Conversions</h3>
+          <p class="service-card__description">
+            Modern wetroom installations with proper waterproofing and drainage. Perfect for accessible bathrooms or contemporary designs.
+          </p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Shower Installations</h3>
+          <p class="service-card__description">
+            Electric shower, power shower, and thermostatic shower installations. Including walk-in showers, shower enclosures, and over-bath showers.
+          </p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Bathroom Suites</h3>
+          <p class="service-card__description">
+            Installation of complete bathroom suites including baths, basins, toilets, and bidets. We work with all leading brands and styles.
+          </p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Ensuite Bathrooms</h3>
+          <p class="service-card__description">
+            Create a luxurious ensuite bathroom with our specialist installation service. Perfect for adding value and convenience to your master bedroom.
+          </p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-card__title">Bathroom Tiling</h3>
+          <p class="service-card__description">
+            Professional wall and floor tiling to complete your bathroom. From classic ceramics to modern porcelain and natural stone.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Included -->
+  <section class="whats-included">
+    <div class="whats-included__container section-container">
+      <h2 class="section-heading">What's Included in Our Service</h2>
+      <div class="whats-included__grid">
+        <div class="included-item">
+          <div class="included-item__icon">📐</div>
+          <h3 class="included-item__title">Design Consultation</h3>
+          <p class="included-item__description">
+            Free design consultation to help you plan your perfect bathroom layout and choose the right fixtures.
+          </p>
+        </div>
+        <div class="included-item">
+          <div class="included-item__icon">🔧</div>
+          <h3 class="included-item__title">Full Plumbing</h3>
+          <p class="included-item__description">
+            All necessary plumbing work including pipework, waste connections, and testing to building regulations.
+          </p>
+        </div>
+        <div class="included-item">
+          <div class="included-item__icon">⚡</div>
+          <h3 class="included-item__title">Electrics</h3>
+          <p class="included-item__description">
+            Safe installation of bathroom electrics by certified electricians, including lights, extractor fans, and shower circuits.
+          </p>
+        </div>
+        <div class="included-item">
+          <div class="included-item__icon">🛁</div>
+          <h3 class="included-item__title">Professional Fitting</h3>
+          <p class="included-item__description">
+            Expert installation of all bathroom fixtures and fittings with attention to detail and quality finish.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Section -->
+  <section class="why-choose">
+    <div class="why-choose__container section-container">
+      <h2 class="section-heading">Why Choose Our Bathroom Installers?</h2>
+      <div class="why-choose__grid">
+        <div class="feature-card">
+          <div class="feature-card__icon">👨‍🔧</div>
+          <h3 class="feature-card__title">Experienced Fitters</h3>
+          <p class="feature-card__description">
+            Our bathroom installers have years of experience fitting all types of bathrooms to the highest standards.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">📋</div>
+          <h3 class="feature-card__title">Full Project Management</h3>
+          <p class="feature-card__description">
+            We coordinate all trades (plumbers, electricians, tilers) so you have one point of contact throughout your project.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">✨</div>
+          <h3 class="feature-card__title">Quality Finish</h3>
+          <p class="feature-card__description">
+            We take pride in delivering a perfect finish on every bathroom, with attention to even the smallest details.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">💯</div>
+          <h3 class="feature-card__title">Workmanship Guarantee</h3>
+          <p class="feature-card__description">
+            All our bathroom installations come with a workmanship guarantee for complete peace of mind.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bathroom Fitters Directory -->
+  <section id="bathroom-fitters" class="fitters-directory">
+    <div class="fitters-directory__container section-container">
+      <h2 class="section-heading">Bathroom Installers in Dartford</h2>
+      <p class="section-subheading">
+        Contact these trusted bathroom fitting specialists for a free quote on your bathroom installation in Dartford.
+      </p>
+      <div class="fitters-directory__grid">
+        {plumbers.map((plumber) => (
+          <PlumberCardV2 {...plumber} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Coverage Area -->
+  <section class="coverage-area">
+    <div class="coverage-area__container section-container">
+      <h2 class="section-heading">Bathroom Installation Coverage</h2>
+      <p class="coverage-area__text">
+        Our bathroom installation specialists serve Dartford and all surrounding areas including Greenhithe, Stone, Wilmington, Swanscombe, Bean, Longfield, Sutton-at-Hone, and throughout the DA1, DA2, and DA3 postcodes.
+      </p>
+      <div class="coverage-area__badges">
+        <span class="coverage-badge">Dartford DA1</span>
+        <span class="coverage-badge">Dartford DA2</span>
+        <span class="coverage-badge">Dartford DA3</span>
+        <span class="coverage-badge">Greenhithe</span>
+        <span class="coverage-badge">Stone</span>
+        <span class="coverage-badge">Swanscombe</span>
+        <span class="coverage-badge">Wilmington</span>
+        <span class="coverage-badge">Longfield</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <div class="final-cta__container section-container">
+      <h2 class="final-cta__heading">Ready for Your New Bathroom?</h2>
+      <p class="final-cta__description">
+        Get in touch with one of our trusted bathroom installers for a free consultation and quote on your bathroom project.
+      </p>
+      <a href="#bathroom-fitters" class="final-cta__button">
+        View Bathroom Installers
+      </a>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* Base Section Styles */
+  section {
+    padding: var(--space-16) var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    section {
+      padding: var(--space-20) var(--space-8);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    section {
+      padding: var(--space-24) var(--space-10);
+    }
+  }
+
+  .section-container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .section-heading {
+    font-family: var(--font-display);
+    font-size: var(--text-4xl);
+    font-weight: var(--font-bold);
+    line-height: var(--leading-tight);
+    color: var(--color-gray-950);
+    text-align: center;
+    margin: 0 0 var(--space-12) 0;
+  }
+
+  .section-subheading {
+    font-family: var(--font-body);
+    font-size: var(--text-lg);
+    font-weight: var(--font-normal);
+    line-height: var(--leading-relaxed);
+    color: var(--color-text-muted);
+    text-align: center;
+    max-width: 70ch;
+    margin: calc(var(--space-12) * -1 + var(--space-4)) auto var(--space-12) auto;
+  }
+
+  /* Service Intro */
+  .service-intro {
+    background: var(--color-bg);
+  }
+
+  .service-intro__container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .service-intro__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .service-intro__text {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    color: var(--color-text-muted);
+    text-align: center;
+  }
+
+  /* Services Offered */
+  .services-offered {
+    background: var(--color-bg-alt);
+  }
+
+  .services-offered__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .service-card {
+    background: white;
+    padding: var(--space-6);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .service-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    color: var(--color-gray-950);
+    margin-bottom: var(--space-3);
+  }
+
+  .service-card__description {
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+    color: var(--color-text-muted);
+  }
+
+  /* What's Included */
+  .whats-included {
+    background: var(--color-bg);
+  }
+
+  .whats-included__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-8);
+  }
+
+  .included-item {
+    text-align: center;
+  }
+
+  .included-item__icon {
+    font-size: var(--text-5xl);
+    margin-bottom: var(--space-4);
+  }
+
+  .included-item__title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    color: var(--color-gray-950);
+    margin-bottom: var(--space-3);
+  }
+
+  .included-item__description {
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+    color: var(--color-text-muted);
+  }
+
+  /* Why Choose */
+  .why-choose {
+    background: var(--color-bg-alt);
+  }
+
+  .why-choose__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-8);
+  }
+
+  .feature-card {
+    text-align: center;
+  }
+
+  .feature-card__icon {
+    font-size: var(--text-5xl);
+    margin-bottom: var(--space-4);
+  }
+
+  .feature-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    color: var(--color-gray-950);
+    margin-bottom: var(--space-3);
+  }
+
+  .feature-card__description {
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+    color: var(--color-text-muted);
+  }
+
+  /* Fitters Directory */
+  .fitters-directory {
+    background: var(--color-bg);
+  }
+
+  .fitters-directory__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--space-8);
+  }
+
+  /* Coverage Area */
+  .coverage-area {
+    background: var(--color-bg-alt);
+    text-align: center;
+  }
+
+  .coverage-area__text {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    color: var(--color-text-muted);
+    max-width: 80ch;
+    margin: 0 auto var(--space-8) auto;
+  }
+
+  .coverage-area__badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+  }
+
+  .coverage-badge {
+    display: inline-block;
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-primary);
+    background-color: var(--color-gray-100);
+    border-radius: var(--border-radius-full);
+    transition: all var(--transition-base);
+  }
+
+  .coverage-badge:hover {
+    background-color: var(--color-gray-200);
+    transform: translateY(-2px);
+  }
+
+  /* Final CTA */
+  .final-cta {
+    background: var(--color-primary);
+    color: white;
+    text-align: center;
+  }
+
+  .final-cta__heading {
+    color: white;
+    margin-bottom: var(--space-4);
+  }
+
+  .final-cta__description {
+    color: var(--color-gray-200);
+    margin-bottom: var(--space-8);
+    font-size: var(--text-lg);
+    max-width: 60ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .final-cta__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4) var(--space-8);
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
+    text-decoration: none;
+    background-color: var(--color-accent);
+    color: white;
+    border-radius: var(--border-radius-lg);
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .final-cta__button:hover {
+    background-color: var(--color-accent-dark);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl);
+  }
+</style>
