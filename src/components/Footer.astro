@@ -5,7 +5,12 @@ const currentYear = new Date().getFullYear();
 
 <footer class="footer">
   <div class="footer__container">
-    <p class="footer__text">
+    <div class="footer__service-area">
+      <p class="footer__service-area-text">
+        Proudly serving Dartford and surrounding Kent areas including Temple Hill, Brent, Stone, Wilmington, Greenhithe, Swanscombe, and Crayford. Full coverage of DA1, DA2 postcodes and selected DA9, DA10, DA11 areas.
+      </p>
+    </div>
+    <p class="footer__copyright">
       © {currentYear} DartfordPlumber.com. All rights reserved.
     </p>
   </div>
@@ -13,7 +18,7 @@ const currentYear = new Date().getFullYear();
 
 <style>
   .footer {
-    padding: var(--space-8) var(--space-6);
+    padding: var(--space-10) var(--space-6);
     background-color: var(--color-gray-950);
     border-top: 4px solid var(--color-primary);
   }
@@ -24,9 +29,25 @@ const currentYear = new Date().getFullYear();
     text-align: center;
   }
 
-  .footer__text {
+  .footer__service-area {
+    padding-bottom: var(--space-6);
+    margin-bottom: var(--space-6);
+    border-bottom: 1px solid var(--color-gray-800);
+  }
+
+  .footer__service-area-text {
     font-family: var(--font-body);
     font-size: var(--text-sm);
-    color: var(--color-gray-300);
+    color: var(--color-gray-400);
+    line-height: var(--leading-relaxed);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .footer__copyright {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    color: var(--color-gray-500);
+    margin: 0;
   }
 </style>

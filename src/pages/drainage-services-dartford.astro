@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroV2 from '../components/HeroV2.astro';
 import PlumberCardV2 from '../components/PlumberCardV2.astro';
 import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
 import plumbersData from '../data/top-plumbers.json';
 
 // Generate slugs for plumbers
@@ -173,28 +174,28 @@ const serviceSchema = {
       <h2 class="section-heading">Why Choose Our Drainage Specialists?</h2>
       <div class="why-choose__grid">
         <div class="feature-card">
-          <div class="feature-card__icon">🚀</div>
+          <div class="feature-card__icon"><Icon name="rocket" /></div>
           <h3 class="feature-card__title">Fast Response</h3>
           <p class="feature-card__description">
             Emergency drainage services available 24/7. We aim to reach you quickly, especially for urgent drainage problems.
           </p>
         </div>
         <div class="feature-card">
-          <div class="feature-card__icon">🔍</div>
+          <div class="feature-card__icon"><Icon name="magnifying-glass" /></div>
           <h3 class="feature-card__title">Latest Equipment</h3>
           <p class="feature-card__description">
             State-of-the-art CCTV drain cameras and high-pressure jetting equipment for effective drainage solutions.
           </p>
         </div>
         <div class="feature-card">
-          <div class="feature-card__icon">💪</div>
+          <div class="feature-card__icon"><Icon name="check-badge" /></div>
           <h3 class="feature-card__title">Experienced Engineers</h3>
           <p class="feature-card__description">
             Qualified drainage engineers with years of experience fixing all types of drainage problems.
           </p>
         </div>
         <div class="feature-card">
-          <div class="feature-card__icon">💷</div>
+          <div class="feature-card__icon"><Icon name="currency-pound" /></div>
           <h3 class="feature-card__title">Competitive Prices</h3>
           <p class="feature-card__description">
             Honest, upfront pricing with no call-out fees. We'll provide a clear quote before starting any work.

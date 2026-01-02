@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroV2 from '../components/HeroV2.astro';
 import PlumberCardV2 from '../components/PlumberCardV2.astro';
 import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
 import plumbersData from '../data/top-plumbers.json';
 
 // Generate slugs for plumbers
@@ -128,28 +129,28 @@ const serviceSchema = {
       <h2 class="section-heading">What's Included in Our Service</h2>
       <div class="whats-included__grid">
         <div class="included-item">
-          <div class="included-item__icon">📐</div>
+          <div class="included-item__icon"><Icon name="ruler" /></div>
           <h3 class="included-item__title">Design Consultation</h3>
           <p class="included-item__description">
             Free design consultation to help you plan your perfect bathroom layout and choose the right fixtures.
           </p>
         </div>
         <div class="included-item">
-          <div class="included-item__icon">🔧</div>
+          <div class="included-item__icon"><Icon name="wrench" /></div>
           <h3 class="included-item__title">Full Plumbing</h3>
           <p class="included-item__description">
             All necessary plumbing work including pipework, waste connections, and testing to building regulations.
           </p>
         </div>
         <div class="included-item">
-          <div class="included-item__icon">⚡</div>
+          <div class="included-item__icon"><Icon name="bolt" /></div>
           <h3 class="included-item__title">Electrics</h3>
           <p class="included-item__description">
             Safe installation of bathroom electrics by certified electricians, including lights, extractor fans, and shower circuits.
           </p>
         </div>
         <div class="included-item">
-          <div class="included-item__icon">🛁</div>
+          <div class="included-item__icon"><Icon name="sparkles" /></div>
           <h3 class="included-item__title">Professional Fitting</h3>
           <p class="included-item__description">
             Expert installation of all bathroom fixtures and fittings with attention to detail and quality finish.
@@ -165,28 +166,28 @@ const serviceSchema = {
       <h2 class="section-heading">Why Choose Our Bathroom Installers?</h2>
       <div class="why-choose__grid">
         <div class="feature-card">
-          <div class="feature-card__icon">👨‍🔧</div>
+          <div class="feature-card__icon"><Icon name="user-wrench" /></div>
           <h3 class="feature-card__title">Experienced Fitters</h3>
           <p class="feature-card__description">
             Our bathroom installers have years of experience fitting all types of bathrooms to the highest standards.
           </p>
         </div>
         <div class="feature-card">
-          <div class="feature-card__icon">📋</div>
+          <div class="feature-card__icon"><Icon name="clipboard" /></div>
           <h3 class="feature-card__title">Full Project Management</h3>
           <p class="feature-card__description">
             We coordinate all trades (plumbers, electricians, tilers) so you have one point of contact throughout your project.
           </p>
         </div>
         <div class="feature-card">
-          <div class="feature-card__icon">✨</div>
+          <div class="feature-card__icon"><Icon name="sparkles" /></div>
           <h3 class="feature-card__title">Quality Finish</h3>
           <p class="feature-card__description">
             We take pride in delivering a perfect finish on every bathroom, with attention to even the smallest details.
           </p>
         </div>
         <div class="feature-card">
-          <div class="feature-card__icon">💯</div>
+          <div class="feature-card__icon"><Icon name="check-badge" /></div>
           <h3 class="feature-card__title">Workmanship Guarantee</h3>
           <p class="feature-card__description">
             All our bathroom installations come with a workmanship guarantee for complete peace of mind.

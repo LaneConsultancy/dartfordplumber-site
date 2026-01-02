@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroV2 from '../components/HeroV2.astro';
 import PlumberCardV2 from '../components/PlumberCardV2.astro';
 import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
 import plumbersData from '../data/top-plumbers.json';
 
 // Generate slugs for plumbers
@@ -128,28 +129,28 @@ const serviceSchema = {
       <h2 class="section-heading">Why Choose Dartford Emergency Plumbers?</h2>
       <div class="why-choose__grid">
         <div class="feature-card">
-          <div class="feature-card__icon">⚡</div>
+          <div class="feature-card__icon"><Icon name="lightning" /></div>
           <h3 class="feature-card__title">Rapid Response</h3>
           <p class="feature-card__description">
             We understand emergencies can't wait. Our plumbers aim to reach you within the hour for urgent callouts.
           </p>
         </div>
         <div class="feature-card">
-          <div class="feature-card__icon">🕐</div>
+          <div class="feature-card__icon"><Icon name="clock" /></div>
           <h3 class="feature-card__title">24/7 Availability</h3>
           <p class="feature-card__description">
             Day or night, weekends and bank holidays – our emergency plumbers are always available when you need them.
           </p>
         </div>
         <div class="feature-card">
-          <div class="feature-card__icon">🛠️</div>
+          <div class="feature-card__icon"><Icon name="tools" /></div>
           <h3 class="feature-card__title">Fully Equipped</h3>
           <p class="feature-card__description">
             Our emergency vans carry a comprehensive range of parts and tools to fix most problems on the first visit.
           </p>
         </div>
         <div class="feature-card">
-          <div class="feature-card__icon">✅</div>
+          <div class="feature-card__icon"><Icon name="check-badge" /></div>
           <h3 class="feature-card__title">Professional & Qualified</h3>
           <p class="feature-card__description">
             Our emergency plumbers are experienced professionals who maintain appropriate qualifications for the work they undertake.

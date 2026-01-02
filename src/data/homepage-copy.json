@@ -8,11 +8,11 @@
     }
   },
   "intro": {
-    "heading": "When You Need a Plumber in Dartford, You Need Someone You Can Trust",
+    "heading": "Trusted Plumbers Serving Dartford & Surrounding Areas",
     "body": [
-      "A burst pipe at 6am. A boiler that's stopped working in December. A bathroom renovation that can't wait. When you need a plumber in Dartford, you're not just looking for someone with a van and a wrench — you need someone reliable who'll do the job right.",
-      "That's why we've put together this directory of Dartford's top-rated plumbers. These trusted professionals have earned ratings of 4.8 stars or higher from real local customers.",
-      "No cold-calling strangers. No wondering if they'll show up. Just 10 trusted local plumbers serving Dartford and the surrounding area, ready to help with everything from emergency call-outs to planned installations."
+      "Finding a reliable plumber in Dartford doesn't have to be stressful. Whether you're in Dartford town centre, Temple Hill, Brent, Stone, or Wilmington, our directory connects you with vetted, local plumbing professionals who know the area inside out.",
+      "From Victorian terraces in the town centre to modern developments near Bluewater, Dartford homes present unique plumbing challenges. Our featured plumbers understand local water pressure issues, the quirks of older housing stock, and the specific needs of Dartford residents.",
+      "Covering all DA postcodes: DA1, DA2, and surrounding Kent areas."
     ]
   },
   "why": {
@@ -48,17 +48,74 @@
     "Radiator installation and repairs"
   ],
   "areasServed": {
-    "heading": "Covering Dartford and Surrounding Areas",
-    "description": "Our plumbers serve Dartford and the local area including:",
-    "areas": [
-      "Stone",
-      "Swanscombe",
-      "Greenhithe",
-      "Darenth",
-      "Wilmington",
-      "Crayford",
-      "Erith",
-      "Barnehurst"
+    "heading": "Service Areas Across Dartford",
+    "description": "Our network of professional plumbers proudly serves every corner of Dartford and the surrounding Kent areas. All featured plumbers are local to Dartford and can typically reach you within 30-60 minutes for emergency callouts.",
+    "postcodes": "Postcode Coverage: DA1, DA2, and selected DA9, DA10, DA11 areas.",
+    "regions": [
+      {
+        "name": "Central Dartford",
+        "areas": [
+          "Dartford Town Centre (DA1 1) - High Street, Central Park, Bullace Lane",
+          "Lowfield Street & Hythe Street - Historic properties and modern flats",
+          "Temple Hill (DA1 5) - Residential estates and family homes"
+        ]
+      },
+      {
+        "name": "Greater Dartford",
+        "areas": [
+          "Brent (DA2 6) - Craylands, Joyce Green, and surrounding estates",
+          "Stone (DA2 6) - Stone Lodge, Crossways, and Castle Hill",
+          "Wilmington (DA2 7) - Village centre and surrounding developments",
+          "Sutton-at-Hone - Rural properties and period homes",
+          "Darenth - Village properties and countryside locations"
+        ]
+      },
+      {
+        "name": "Nearby Areas",
+        "areas": [
+          "Greenhithe - Ingress Park, Knockhall, Bluewater vicinity",
+          "Swanscombe - Heritage Quarter and new developments",
+          "Crayford - Barnes Cray, Slade Green borders"
+        ]
+      }
+    ]
+  },
+  "localInsights": {
+    "heading": "Dartford Plumbing Insights",
+    "insights": [
+      {
+        "title": "Hard Water Area",
+        "description": "Dartford sits in one of the UK's hardest water zones. Consider annual boiler servicing and limescale protection for appliances."
+      },
+      {
+        "title": "Period Properties",
+        "description": "If you live in one of Dartford's Victorian or Edwardian terraces (common in the town centre), ask about pipe inspection services - many still have original lead pipes."
+      },
+      {
+        "title": "New Developments",
+        "description": "Residents in newer builds near Bluewater or Ebbsfleet should ensure Gas Safe registered engineers handle boiler installations and servicing."
+      }
+    ]
+  },
+  "faq": {
+    "heading": "Common Plumbing Questions in Dartford",
+    "questions": [
+      {
+        "question": "What are typical plumbing issues in Dartford homes?",
+        "answer": "Dartford's mix of Victorian, Edwardian, and modern properties means plumbers here deal with diverse challenges: hard water issues (Kent is a hard water area, leading to limescale buildup), older pipe systems in period properties, boiler breakdowns during cold winters, and drainage problems due to clay soil common in the area."
+      },
+      {
+        "question": "Do you cover emergencies outside Dartford town centre?",
+        "answer": "Yes! Our plumbers serve all Dartford areas including Temple Hill, Brent, Stone, Wilmington, and nearby villages. Most offer 24/7 emergency callouts across DA1 and DA2 postcodes."
+      },
+      {
+        "question": "Why hire a local Dartford plumber?",
+        "answer": "Local plumbers offer faster response times (especially in emergencies), local knowledge of Dartford housing stock and common issues, community reputation built on word-of-mouth recommendations, and no excessive travel charges since you're in their primary service area."
+      },
+      {
+        "question": "What's the average callout time in Dartford?",
+        "answer": "Most of our featured plumbers can reach central Dartford locations within 30-45 minutes. Areas like Stone, Wilmington, or Greenhithe typically see response times of 45-60 minutes, depending on traffic and time of day."
+      }
     ]
   },
   "cta": {

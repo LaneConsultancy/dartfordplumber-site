@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroV2 from '../components/HeroV2.astro';
 import PlumberCardV2 from '../components/PlumberCardV2.astro';
 import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
 import plumbersData from '../data/top-plumbers.json';
 
 // Generate slugs for plumbers
@@ -155,28 +156,28 @@ const serviceSchema = {
       <h2 class="section-heading">Why Choose Our Heating Engineers?</h2>
       <div class="why-choose__grid">
         <div class="feature-card">
-          <div class="feature-card__icon">✓</div>
+          <div class="feature-card__icon"><Icon name="check-badge" /></div>
           <h3 class="feature-card__title">Qualified Professionals</h3>
           <p class="feature-card__description">
             Our heating engineers are qualified professionals who maintain appropriate certifications for safe, compliant boiler and heating work.
           </p>
         </div>
         <div class="feature-card">
-          <div class="feature-card__icon">⚙️</div>
+          <div class="feature-card__icon"><Icon name="cog" /></div>
           <h3 class="feature-card__title">All Makes & Models</h3>
           <p class="feature-card__description">
             We work on all boiler brands including Worcester Bosch, Vaillant, Ideal, Baxi, and more. No job too big or small.
           </p>
         </div>
         <div class="feature-card">
-          <div class="feature-card__icon">💷</div>
+          <div class="feature-card__icon"><Icon name="currency-pound" /></div>
           <h3 class="feature-card__title">Transparent Pricing</h3>
           <p class="feature-card__description">
             Clear, upfront quotes with no hidden costs. We'll explain exactly what work is needed and how much it will cost before we start.
           </p>
         </div>
         <div class="feature-card">
-          <div class="feature-card__icon">🛡️</div>
+          <div class="feature-card__icon"><Icon name="shield-check" /></div>
           <h3 class="feature-card__title">Guaranteed Work</h3>
           <p class="feature-card__description">
             All installations and repairs come with our workmanship guarantee, giving you peace of mind for years to come.
